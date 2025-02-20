@@ -26,30 +26,19 @@ public class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Minesweeper game = null;
-
-        // คำพูดเปิดเกมแบบสุ่ม
-        String[] funIntros = {
-                "Welcome to the Ultimate Minesweeper Challenge!",
-                "Warning: Highly Explosive Mines Ahead!",
-                "Think fast or BOOM!",
-                "Test your luck in the ultimate minefield!",
-                "Can you outsmart the mines? Let's find out!"
-        };
-
         Random random = new Random();
+
         System.out.println("===================================");
-        System.out.println(funIntros[random.nextInt(funIntros.length)]);
+        System.out.println("Welcome to the Ultimate Minesweeper Challenge!");
         System.out.println("===================================");
 
         while (true) {
-            // เมนูเลือกโหมด
             System.out.println("Choose Your Challenge:");
             System.out.println("1. Default Minefield (Classic Mode)");
             System.out.println("2. Load Minefield from File");
             System.out.println("3. Reverse 1 (Flipped Mode)");
             System.out.println("4. Reverse 2 (Flipped Mode)");
             System.out.println("5. Exit");
-            System.out.println("6. SECRET MODE (Try if you dare!)");
             System.out.print("Enter your choice: ");
 
             int choice = scanner.nextInt();
@@ -73,9 +62,6 @@ public class App {
                 System.out.println("Thanks for playing! See you next time!");
                 scanner.close();
                 return;
-            } else if (choice == 6) {
-                secretMode();
-                return;
             } else {
                 System.out.println("Invalid choice! Self-destructing in 3...2...1...BOOM!");
                 scanner.close();
@@ -83,12 +69,17 @@ public class App {
             }
 
             if (game != null) {
-                game.displayField();
+                if (random.nextBoolean()) {
+                    System.out.println("BOOM! You hit a mine! Game Over!");
+                    scanner.close();
+                    return;
+                } else {
+                    game.displayField();
+                }
             }
         }
     }
 
-    // กลับขวา-ซ้าย
     static void mirrorField(Minesweeper game) {
         for (int i = 0; i < game.fieldX; i++) {
             for (int j = 0; j < game.fieldY / 2; j++) {
@@ -98,18 +89,5 @@ public class App {
             }
         }
     }
-
-    // โหมดลับ! (Secret Mode)
-    static void secretMode() {
-        String[] secretMessages = {
-                "Self-destructing in 3...2...1...BOOM!",
-                "Self-destructing in 3...2...1...BOOM!",
-                "Self-destructing in 3...2...1...BOOM!",
-        };
-
-        Random random = new Random();
-        System.out.println("\n========== SECRET MODE ==========");
-        System.out.println(secretMessages[random.nextInt(secretMessages.length)]);
-        System.out.println("=================================\n");
-    }
 }
+ 
