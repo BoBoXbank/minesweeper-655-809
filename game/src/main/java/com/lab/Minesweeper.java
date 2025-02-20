@@ -31,16 +31,17 @@ public class Minesweeper {
         }
     }
  
-  
+   
     void displayField() {
-        
         for (int i = 0; i < fieldX; i++) {
             for (int j = 0; j < fieldY; j++) {
-                System.out.print(cells[i][j] == IS_MINE ? MINE_CELL : SAFE_CELL);
+                System.out.print((cells[i][j] == IS_MINE ? MINE_CELL : SAFE_CELL) + " ");
             }
-            System.out.println(); 
+            System.out.println();
         }
     }
+    
+
  
     void setMineCell(int x, int y) {
         cells[x][y] = IS_MINE;

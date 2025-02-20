@@ -29,11 +29,11 @@ public class App {
 
         // คำพูดเปิดเกมแบบสุ่ม
         String[] funIntros = {
-            "Welcome to the Ultimate Minesweeper Challenge!",
-            "Warning: Highly Explosive Mines Ahead!",
-            "Think fast or BOOM!",
-            "Test your luck in the ultimate minefield!",
-            "Can you outsmart the mines? Let's find out!"
+                "Welcome to the Ultimate Minesweeper Challenge!",
+                "Warning: Highly Explosive Mines Ahead!",
+                "Think fast or BOOM!",
+                "Test your luck in the ultimate minefield!",
+                "Can you outsmart the mines? Let's find out!"
         };
 
         Random random = new Random();
@@ -59,22 +59,23 @@ public class App {
                 game = initMineField();
                 System.out.println("You chose Default Minefield. Good luck!");
             } else if (choice == 2) {
-                game = initMineFieldFromFile("minefield/minefield01.txt");
                 System.out.println("Loaded Minefield from file! Beware of hidden traps!");
+                game = initMineFieldFromFile("minefield/minefield01.txt");
             } else if (choice == 3) {
                 game = initMineField();
                 mirrorField(game);
                 System.out.println("Reverse Mode Activated! Everything is flipped!");
             } else if (choice == 4) {
+                System.out.println("File-Based Minefield Reversed! Can you handle the challenge?");
                 game = initMineFieldFromFile("minefield/minefield01.txt");
                 mirrorField(game);
-                System.out.println("File-Based Minefield Reversed! Can you handle the challenge?");
             } else if (choice == 5) {
                 System.out.println("Thanks for playing! See you next time!");
                 scanner.close();
                 return;
             } else if (choice == 6) {
                 secretMode();
+                return;
             } else {
                 System.out.println("Invalid choice! Self-destructing in 3...2...1...BOOM!");
                 scanner.close();
@@ -101,9 +102,9 @@ public class App {
     // โหมดลับ! (Secret Mode)
     static void secretMode() {
         String[] secretMessages = {
-            "Self-destructing in 3...2...1...BOOM!",
-            "Self-destructing in 3...2...1...BOOM!",
-            "Self-destructing in 3...2...1...BOOM!",
+                "Self-destructing in 3...2...1...BOOM!",
+                "Self-destructing in 3...2...1...BOOM!",
+                "Self-destructing in 3...2...1...BOOM!",
         };
 
         Random random = new Random();
